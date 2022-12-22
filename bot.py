@@ -1,10 +1,7 @@
 # -*- coding: utf8 -*-
 import random
-import time
 import telebot, wikipedia
-import os
 from telebot import types
-from google_currency import convert
 import random
 bot = telebot.TeleBot('5865494074:AAGsPfhoNy5E9ySXDLgHGYO2HJ_EYLAkkFI')
 wikipedia.set_lang("ru")
@@ -71,7 +68,7 @@ def start(message):
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
     list = ["Орёл", "Решка"]
-    list1=['Орёл или решка','Интересный факт','Поддержи меня','Меню','Игры', 'Правда или действие', 'Правда','Действие','КМН(с Кротчи','Камень','Ножницы','Бумага']
+    list1=['Орёл или решка','Интересный факт','Поддержи меня','Меню','Игры', 'Правда или действие', 'Правда','Действие','КМН(с Кротчи)','Камень','Ножницы','Бумага']
     if message.text not in list1:
         bot.send_message(message.chat.id, Krotchy(message.text))
     elif message.text=='Орёл или решка':
@@ -89,7 +86,7 @@ def handle_text(message):
     elif message.text == 'Игры':
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard5 = types.KeyboardButton('Правда или действие')
-        keyboard6 = types.KeyboardButton('КМН(с Кротчи')
+        keyboard6 = types.KeyboardButton('КМН(с Кротчи)')
         keyboard20 = types.KeyboardButton('Меню')
         markup.add(keyboard5, keyboard6, keyboard20)
         bot.send_message(message.chat.id,f' {message.chat.first_name}, во что играть будем?', reply_markup=markup)
@@ -111,7 +108,7 @@ def handle_text(message):
             file_text = r_file.readlines()
             text = random.choice(file_text)
         bot.send_message(message.chat.id, text)
-    elif message.text == 'КМН(с Кротчи':
+    elif message.text == 'КМН(с Кротчи)':
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard9 = types.KeyboardButton('Камень')
         keyboard10 = types.KeyboardButton('Ножницы')
